@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
                         return null;
                     });
         });
-
     }
 
     private void addModelToScene(Anchor anchor, ModelRenderable modelRenderable) {
