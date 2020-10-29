@@ -8,13 +8,9 @@ import android.os.Bundle;
 
 import com.google.ar.core.Anchor;
 import com.google.ar.sceneform.AnchorNode;
-import com.google.ar.sceneform.math.Vector3;
-import com.google.ar.sceneform.rendering.MaterialFactory;
 import com.google.ar.sceneform.rendering.ModelRenderable;
-import com.google.ar.sceneform.rendering.ShapeFactory;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
-import com.google.ar.sceneform.rendering.Color;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,13 +23,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ArFragment);
+        arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
 
         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
             Anchor anchor = hitResult.createAnchor();
 
             ModelRenderable.builder()
-                    .setSource(this, Uri.parse("Fox.obj"))
+                    .setSource(this, Uri.parse("model.sfb"))
                     .build()
                     .thenAccept(modelRenderable -> addModelToScene(anchor, modelRenderable))
                     .exceptionally(throwable -> {
